@@ -1,0 +1,21 @@
+proyecto\_final\_modulo1.data\_load package
+===========================================
+
+Submodules
+----------
+
+proyecto\_final\_modulo1.data\_load.read\_images module
+-------------------------------------------------------
+
+.. automodule:: proyecto_final_modulo1.data_load.read_images
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: proyecto_final_modulo1.data_load
+   :members:
+   :show-inheritance:
+   :undoc-members:

@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>proyecto_final_modulo1.data_load.read_images &mdash; documentación de covid19 - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            covid19
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">proyecto_final_modulo1</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">covid19</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">proyecto_final_modulo1.data_load.read_images</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para proyecto_final_modulo1.data_load.read_images</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="File">
+<a class="viewcode-back" href="../../../proyecto_final_modulo1.data_load.html#proyecto_final_modulo1.data_load.read_images.File">[documentos]</a>
+<span></span><span class="k">class</span><span class="w"> </span><span class="nc">File</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gestiona la información (metadatos) sobre archivos dentro de una estructura</span>
+<span class="sd">    de proyecto específica.</span>
+
+<span class="sd">    Permite cargar metadatos de archivos existentes en directorios predefinidos,</span>
+<span class="sd">    procesar nuevos archivos o directorios para extraer sus metadatos, mover</span>
+<span class="sd">    archivos entre estados (ej. &#39;nuevo&#39; a &#39;procesado&#39;) y mostrar los</span>
+<span class="sd">    metadatos recopilados.</span>
+
+<span class="sd">    Atributos:</span>
+<span class="sd">        images (dict): Mantenido por posible compatibilidad, pero actualmente no utilizado</span>
+<span class="sd">                       en la lógica principal.</span>
+<span class="sd">        metadata (dict): Diccionario que almacena los metadatos de los archivos.</span>
+<span class="sd">                         Las claves son los nombres de archivo (basename) y los</span>
+<span class="sd">                         valores son diccionarios con detalles como &#39;path&#39;, &#39;size&#39;,</span>
+<span class="sd">                         &#39;last_modified&#39;.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="File.__init__">
+<a class="viewcode-back" href="../../../proyecto_final_modulo1.data_load.html#proyecto_final_modulo1.data_load.read_images.File.__init__">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor de la clase File.</span>
+
+<span class="sd">        Inicializa el diccionario `self.metadata` vacío, que se usará para</span>
+<span class="sd">        almacenar los metadatos de los archivos procesados. También inicializa</span>
+<span class="sd">        `self.images`, aunque no se utiliza activamente en los métodos actuales.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">images</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Mantener por compatibilidad, pero no se usa</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Inicializar metadata</span></div>
+
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_config_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene la ruta absoluta del directorio de trabajo actual.</span>
+
+<span class="sd">        Se utiliza internamente como base para construir rutas a los subdirectorios</span>
+<span class="sd">        específicos del proyecto (ej. &#39;covid/images&#39;, &#39;covid/nuevo&#39;).</span>
+
+<span class="sd">        Nota:</span>
+<span class="sd">            El prefijo &#39;_&#39; indica que este método está destinado a uso interno</span>
+<span class="sd">            dentro de la clase.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: La ruta absoluta del directorio de trabajo actual.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+       
+        <span class="kn">import</span><span class="w"> </span><span class="nn">os</span> 
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_data_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">type_recurso</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Procesa un archivo individual o todos los archivos dentro de un directorio</span>
+<span class="sd">        y extrae sus metadatos, actualizando el diccionario `self.metadata`.</span>
+
+<span class="sd">        Si `type_recurso` es 1, procesa el archivo especificado en `path`.</span>
+<span class="sd">        Si `type_recurso` es 2, itera sobre todos los archivos dentro del</span>
+<span class="sd">        directorio `path` y procesa cada uno.</span>
+
+<span class="sd">        Los metadatos almacenados para cada archivo incluyen:</span>
+<span class="sd">        &#39;filename&#39;: Nombre base del archivo.</span>
+<span class="sd">        &#39;path&#39;: Ruta completa al archivo.</span>
+<span class="sd">        &#39;size&#39;: Tamaño del archivo en bytes.</span>
+<span class="sd">        &#39;last_modified&#39;: Marca de tiempo (timestamp) de la última modificación.</span>
+
+<span class="sd">        Nota:</span>
+<span class="sd">            El prefijo &#39;_&#39; indica que este método está destinado a uso interno</span>
+<span class="sd">            dentro de la clase.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path : str</span>
+<span class="sd">            Ruta al archivo o directorio a procesar.</span>
+<span class="sd">        type_recurso : int, opcional</span>
+<span class="sd">            Tipo de recurso a procesar (1: archivo, 2: directorio).</span>
+<span class="sd">            Por defecto es 1.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True si el procesamiento fue exitoso (o parcialmente exitoso en caso</span>
+<span class="sd">            de directorios), False si se proporcionó un `type_recurso` inválido</span>
+<span class="sd">            o si ocurrió una excepción durante la lectura de metadatos.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">type_recurso</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># Directorio</span>
+                <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="n">file</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="n">file</span><span class="p">,</span>
+                            <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">file_path</span><span class="p">,</span>
+                            <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span>
+                            <span class="s1">&#39;last_modified&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+                        <span class="p">}</span>                        
+                <span class="k">return</span> <span class="kc">True</span>
+            
+            <span class="k">elif</span> <span class="n">type_recurso</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Archivo</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                        <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="n">filename</span><span class="p">,</span>
+                        <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="n">path</span><span class="p">,</span>
+                        <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
+                        <span class="s1">&#39;last_modified&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getmtime</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                    <span class="p">}</span>                    
+                    <span class="k">return</span> <span class="kc">True</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+                
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se pudo leer la imagen: &quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">type_recurso</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">ERROR: &quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_data_load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Carga los metadatos iniciales de los archivos encontrados en los</span>
+<span class="sd">        directorios predefinidos &#39;covid/images&#39; y &#39;covid/nuevo&#39;.</span>
+
+<span class="sd">        Construye las rutas a estos directorios basándose en el directorio de</span>
+<span class="sd">        trabajo actual obtenido con `_get_config_path()`. Llama a `_data_process()`</span>
+<span class="sd">        para cada directorio encontrado para poblar `self.metadata`.</span>
+
+<span class="sd">        Nota:</span>
+<span class="sd">            El prefijo &#39;_&#39; indica que este método está destinado a uso interno</span>
+<span class="sd">            dentro de la clase. Debería llamarse típicamente después de</span>
+<span class="sd">            instanciar la clase para cargar el estado inicial.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+        
+        <span class="n">curr_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading files........&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;covid/images&quot;</span><span class="p">,</span> <span class="s2">&quot;covid/nuevo&quot;</span><span class="p">]:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">curr_dir</span><span class="p">,</span> <span class="n">folder</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RUTA A LEER ARCHIVOS: &quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data_process</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    
+            
+    <span class="k">def</span><span class="w"> </span><span class="nf">_del_file_procesado</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pathfile</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Mueve un archivo desde su ubicación original (presumiblemente un</span>
+<span class="sd">        directorio de &#39;nuevos&#39; o &#39;pendientes&#39;) al directorio &#39;covid/images&#39;</span>
+<span class="sd">        y elimina el archivo original.</span>
+
+<span class="sd">        Después de mover el archivo, actualiza los metadatos llamando a</span>
+<span class="sd">        `_data_process` sobre el directorio &#39;covid/images&#39; para reflejar</span>
+<span class="sd">        el archivo movido y potencialmente actualizar su información si cambió</span>
+<span class="sd">        durante la copia (aunque `copy2` intenta preservar metadatos).</span>
+
+<span class="sd">        Nota:</span>
+<span class="sd">            El prefijo &#39;_&#39; indica que este método está destinado a uso interno</span>
+<span class="sd">            dentro de la clase. El nombre &quot;_del_file_procesado&quot; es ligeramente</span>
+<span class="sd">            engañoso, ya que la acción principal es *mover* (copiar y luego borrar).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pathfile : str</span>
+<span class="sd">            Ruta completa del archivo original que se va a mover.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pathfile</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">ruta_images</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;covid/images&#39;</span><span class="p">)</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">pathfile</span><span class="p">)</span>
+                <span class="n">destino</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ruta_images</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+                <span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span><span class="p">(</span><span class="n">pathfile</span><span class="p">,</span> <span class="n">destino</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">pathfile</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_data_process</span><span class="p">(</span><span class="n">ruta_images</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Actualizar metadatos</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: &quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+<div class="viewcode-block" id="File.show_data">
+<a class="viewcode-back" href="../../../proyecto_final_modulo1.data_load.html#proyecto_final_modulo1.data_load.read_images.File.show_data">[documentos]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Muestra en la consola los metadatos de los archivos almacenados</span>
+<span class="sd">        en el diccionario `self.metadata`.</span>
+
+<span class="sd">        Itera sobre el diccionario `self.metadata` e imprime la información</span>
+<span class="sd">        clave de cada archivo (nombre, ruta, tamaño, fecha de modificación).</span>
+<span class="sd">        Si no hay metadatos cargados, imprime un mensaje indicándolo.</span>
+<span class="sd">        Formatea la fecha de modificación para que sea más legible.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay datos para mostrar.&quot;</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">for</span> <span class="n">filename</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;filename: </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">, &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;path: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;size: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> bytes, &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;last_modified: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;last_modified&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: &quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span></div>
+</div>
+
+            
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">File</span><span class="p">()</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">_data_load</span><span class="p">()</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">show_data</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2025, Juan Carlos Torrico, Carlos Cruz, Juan Carlos Vela.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

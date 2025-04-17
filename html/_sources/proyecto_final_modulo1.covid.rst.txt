@@ -1,0 +1,18 @@
+proyecto\_final\_modulo1.covid package
+======================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   proyecto_final_modulo1.covid.nuevo
+
+Module contents
+---------------
+
+.. automodule:: proyecto_final_modulo1.covid
+   :members:
+   :show-inheritance:
+   :undoc-members:

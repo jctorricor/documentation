@@ -1,0 +1,31 @@
+proyecto\_final\_modulo1 package
+================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   proyecto_final_modulo1.covid
+   proyecto_final_modulo1.crud
+   proyecto_final_modulo1.data_load
+
+Submodules
+----------
+
+proyecto\_final\_modulo1.app module
+-----------------------------------
+
+.. automodule:: proyecto_final_modulo1.app
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: proyecto_final_modulo1
+   :members:
+   :show-inheritance:
+   :undoc-members:

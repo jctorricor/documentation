@@ -1,0 +1,37 @@
+proyecto\_final\_modulo1.crud package
+=====================================
+
+Submodules
+----------
+
+proyecto\_final\_modulo1.crud.agregar module
+--------------------------------------------
+
+.. automodule:: proyecto_final_modulo1.crud.agregar
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+proyecto\_final\_modulo1.crud.eliminar module
+---------------------------------------------
+
+.. automodule:: proyecto_final_modulo1.crud.eliminar
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+proyecto\_final\_modulo1.crud.modificar module
+----------------------------------------------
+
+.. automodule:: proyecto_final_modulo1.crud.modificar
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: proyecto_final_modulo1.crud
+   :members:
+   :show-inheritance:
+   :undoc-members:
